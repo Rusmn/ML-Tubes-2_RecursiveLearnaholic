@@ -1,0 +1,14 @@
+# Core scientific stack
+numpy
+pandas
+matplotlib
+scikit-learn
+pillow
+
+# Deep learning and NLP
+tensorflow
+nltk
+
+# Notebook workflow
+jupyter
+ipykernel

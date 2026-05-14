@@ -2,21 +2,13 @@ from pathlib import Path
 
 import numpy as np
 
-from common.io import ensure_dir, load_json, load_npy, save_json
+from common.io import ensure_dir, load_npy, save_json
 
 from .evaluate import eval_keras, hist_sum
 from .keras_models import need_tf
+from .preprocess import load_vocab
 from .train import grid_cfg, train_run
 from .weights import export_weights
-
-def make_index(word_to_index):
-    return {int(index): word for word, index in word_to_index.items()}
-
-def load_vocab(vocab_dir):
-    vocab_path = Path(vocab_dir)
-    word_to_index = load_json(vocab_path / "vocab.json")
-    index_to_word = make_index(word_to_index)
-    return word_to_index, index_to_word
 
 def load_data(feature_path, caption_path, vocab_dir):
     features = load_npy(feature_path).astype("float32")

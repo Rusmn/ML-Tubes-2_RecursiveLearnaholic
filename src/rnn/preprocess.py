@@ -7,6 +7,17 @@ from common.io import ensure_dir, load_json, save_json, save_npy
 
 PUNCT = re.compile(r"[^a-z0-9\s]")
 
+def read_captions(path):
+    captions = []
+    with Path(path).open("r", encoding="utf-8") as file:
+        for line in file:
+            line = line.strip()
+            if not line:
+                continue
+            parts = line.split(",", 1)
+            captions.append(parts[-1])
+    return captions
+
 def clean_text(text):
     text = str(text).lower()
     text = PUNCT.sub("", text)

@@ -1,6 +1,6 @@
 import numpy as np
 
-from common.autograd.autograd import Value
+from common.autograd import Value
 from model_implementation.layer.module import Module
 
 class Embedding(Module):
@@ -31,3 +31,22 @@ class Embedding(Module):
 
     def parameters(self):
         return [self.weight]
+
+    def state_dict(self):
+        return {
+            "weight": np.array(self.weight.data, copy=True),
+        }
+
+    def load_state(self, state):
+        weight = np.array(state["weight"], dtype=float, copy=True)
+        if weight.shape != self.weight.data.shape:
+            raise ValueError
+
+        self.weight.data = weight
+        self.weight.grad = np.zeros_like(self.weight.data)
+
+    def load_keras(self, weights):
+        self.load_state({"weight": weights[0]})
+
+
+EmbeddingLayer = Embedding

@@ -5,12 +5,10 @@ from common.io import ensure_dir
 from .keras_models import build_preinject, compile_model
 from .sequences import teacher_pairs
 
-
 def cap_len(config):
     if "caption_length" in config:
         return int(config["caption_length"])
     return max(int(config["max_length"]) - 1, 1)
-
 
 def build_cfg(config):
     caption_length = cap_len(config)
@@ -25,7 +23,6 @@ def build_cfg(config):
         dropout=float(config.get("dropout", 0.0)),
     )
     return compile_model(model, learn_rate=float(config.get("learn_rate", config.get("learning_rate", 0.001))))
-
 
 def train_decoder(
     model,
@@ -66,7 +63,6 @@ def train_decoder(
 
     return history
 
-
 def train_run(image_features, caption_sequences, config, model_dir="models/rnn", val_data=None, verbose=1):
     model = build_cfg(config)
     kind = config.get("recur_type", config.get("recurrent_type", "lstm"))
@@ -91,7 +87,6 @@ def train_run(image_features, caption_sequences, config, model_dir="models/rnn",
     )
     return model, history, model_path
 
-
 def grid_cfg(base_config, recur_types=("rnn", "lstm"), layer_opts=(1, 2, 3), hidden_opts=(128, 512)):
     configs = []
     for kind in recur_types:
@@ -105,7 +100,6 @@ def grid_cfg(base_config, recur_types=("rnn", "lstm"), layer_opts=(1, 2, 3), hid
                 config["model_name"] = "{0}_layers{1}_hidden{2}_len{3}.keras".format(kind, layers, hidden, caption_length)
                 configs.append(config)
     return configs
-
 
 def grid_train(image_features, caption_sequences, configs, model_dir="models/rnn", val_data=None, verbose=1):
     results = []

@@ -4,7 +4,6 @@ from common.metrics import score_set, timer
 
 from .decode import decode_batch, norm_vocab
 
-
 def seq_tokens(sequence, index_to_word, start_token="<start>", end_token="<end>", pad_token="<pad>"):
     idx_to_word = norm_vocab(index_to_word)
     tokens = []
@@ -18,7 +17,6 @@ def seq_tokens(sequence, index_to_word, start_token="<start>", end_token="<end>"
         tokens.append(token)
 
     return tokens
-
 
 def eval_keras(model, image_features, ref_sequences, word_to_index, index_to_word, max_length):
     references = []
@@ -38,7 +36,6 @@ def eval_keras(model, image_features, ref_sequences, word_to_index, index_to_wor
     scores["runtime_seconds"] = float(elapsed["elapsed_seconds"])
     scores["samples"] = int(len(predictions))
     return scores
-
 
 def hist_sum(history):
     raw_history = getattr(history, "history", history)

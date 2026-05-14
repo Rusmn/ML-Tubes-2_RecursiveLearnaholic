@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def norm_vocab(index_to_word):
     return {int(key): value for key, value in index_to_word.items()}
 

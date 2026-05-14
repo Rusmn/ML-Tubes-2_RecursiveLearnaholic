@@ -1,13 +1,11 @@
 from model_implementation.layer.module import Linear
 
-
 def dense_state(weights):
     bias = weights[1].reshape(1, -1) if len(weights) > 1 and weights[1] is not None else None
     return {
         "weight": weights[0],
         "bias": bias,
     }
-
 
 class DenseProjectionLayer(Linear):
     def forward(self, x):

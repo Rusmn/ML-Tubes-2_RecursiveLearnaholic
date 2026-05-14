@@ -4,7 +4,6 @@ import numpy as np
 
 from common.io import ensure_dir
 
-
 def export_weights(model, path):
     output_path = Path(path)
     ensure_dir(output_path.parent)

@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def teacher_pairs(caption_sequences):
     sequences = np.asarray(caption_sequences, dtype="int32")
     if sequences.ndim != 2 or sequences.shape[1] < 2:

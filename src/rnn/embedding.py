@@ -48,5 +48,4 @@ class Embedding(Module):
     def load_keras(self, weights):
         self.load_state({"weight": weights[0]})
 
-
 EmbeddingLayer = Embedding

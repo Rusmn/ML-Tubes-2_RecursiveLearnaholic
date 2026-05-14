@@ -5,7 +5,6 @@ def need_tf():
         raise ImportError
     return tf
 
-
 def build_preinject(
     vocab_size,
     feature_dim,
@@ -64,7 +63,6 @@ def build_preinject(
         outputs=outputs,
         name="preinject_{0}".format(layer_prefix),
     )
-
 
 def compile_model(model, learn_rate=0.001):
     tf = need_tf()

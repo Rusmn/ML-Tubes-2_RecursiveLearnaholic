@@ -4,7 +4,6 @@ import numpy as np
 def norm_vocab(index_to_word):
     return {int(key): value for key, value in index_to_word.items()}
 
-
 def greedy_decode(
     model,
     image_feature,
@@ -41,7 +40,6 @@ def greedy_decode(
             sequence[0, step + 1] = next_id
 
     return tokens
-
 
 def decode_batch(model, image_features, word_to_index, index_to_word, max_length):
     predictions = []

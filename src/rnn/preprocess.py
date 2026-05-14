@@ -5,9 +5,7 @@ import numpy as np
 
 from common.io import ensure_dir, load_json, save_json, save_npy
 
-
 PUNCT = re.compile(r"[^a-z0-9\s]")
-
 
 def clean_text(text):
     text = str(text).lower()
@@ -15,13 +13,11 @@ def clean_text(text):
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
-
 def tokenize(text):
     text = clean_text(text)
     if not text:
         return []
     return text.split()
-
 
 def make_vocab(captions, special=None, min_freq=1):
     special = list(special or ["<pad>", "<start>", "<end>", "<unk>"])
@@ -50,14 +46,12 @@ def make_vocab(captions, special=None, min_freq=1):
 
     return word_to_index, index_to_word
 
-
 def pad_seq(sequence, max_length, pad_id=0):
     arr = np.asarray(sequence, dtype="int32")
     if arr.shape[0] >= max_length:
         return arr[:max_length]
     pad_width = max_length - arr.shape[0]
     return np.pad(arr, (0, pad_width), mode="constant", constant_values=pad_id)
-
 
 def encode_caps(captions, max_length, special=None, min_freq=1):
     word_to_index, index_to_word = make_vocab(captions, special=special, min_freq=min_freq)
@@ -77,22 +71,20 @@ def encode_caps(captions, max_length, special=None, min_freq=1):
 
     return np.asarray(sequences, dtype="int32"), word_to_index, index_to_word
 
+def make_index(word_to_index):
+    return {int(index): word for word, index in word_to_index.items()}
 
 def save_vocab(word_to_index, index_to_word, out_dir):
     out_path = Path(out_dir)
     ensure_dir(out_path)
-    save_json(word_to_index, out_path / "word_to_index.json")
-    save_json({str(key): value for key, value in index_to_word.items()}, out_path / "index_to_word.json")
+    save_json(word_to_index, out_path / "vocab.json")
     return out_path
-
 
 def load_vocab(out_dir):
     out_path = Path(out_dir)
-    word_to_index = load_json(out_path / "word_to_index.json")
-    index_to_word = load_json(out_path / "index_to_word.json")
-    index_to_word = {int(key): value for key, value in index_to_word.items()}
+    word_to_index = load_json(out_path / "vocab.json")
+    index_to_word = make_index(word_to_index)
     return word_to_index, index_to_word
-
 
 def prep_data(captions, max_length, out_dir=None, special=None, min_freq=1):
     sequences, word_to_index, index_to_word = encode_caps(

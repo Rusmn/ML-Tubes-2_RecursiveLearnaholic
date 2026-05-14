@@ -9,14 +9,14 @@ from .keras_models import need_tf
 from .train import grid_cfg, train_run
 from .weights import export_weights
 
+def make_index(word_to_index):
+    return {int(index): word for word, index in word_to_index.items()}
 
 def load_vocab(vocab_dir):
     vocab_path = Path(vocab_dir)
-    word_to_index = load_json(vocab_path / "word_to_index.json")
-    index_to_word = load_json(vocab_path / "index_to_word.json")
-    index_to_word = {int(key): value for key, value in index_to_word.items()}
+    word_to_index = load_json(vocab_path / "vocab.json")
+    index_to_word = make_index(word_to_index)
     return word_to_index, index_to_word
-
 
 def load_data(feature_path, caption_path, vocab_dir):
     features = load_npy(feature_path).astype("float32")
@@ -27,7 +27,6 @@ def load_data(feature_path, caption_path, vocab_dir):
         raise ValueError("feature dan caption harus memiliki jumlah sample yang sama.")
 
     return features, captions, word_to_index, index_to_word
-
 
 def split_data(features, captions, val_ratio=0.2, seed=42):
     if val_ratio <= 0 or val_ratio >= 1:
@@ -45,10 +44,8 @@ def split_data(features, captions, val_ratio=0.2, seed=42):
     val_data = (features[val_index], captions[val_index])
     return train_data, val_data
 
-
 def save_hist(history, path):
     return save_json(hist_sum(history), path)
-
 
 def save_score(score, path):
     clean_score = {}
@@ -58,7 +55,6 @@ def save_score(score, path):
         else:
             clean_score[key] = value
     return save_json(clean_score, path)
-
 
 def train_grid(
     features,
@@ -104,11 +100,9 @@ def train_grid(
     save_json(records, report_path / "train_records.json")
     return records
 
-
 def load_model(model_path):
     tf = need_tf()
     return tf.keras.models.load_model(model_path)
-
 
 def eval_model(record, features, captions, word_to_index, index_to_word, max_length, report_dir="reports/tables"):
     model = load_model(record["model_path"])
@@ -125,7 +119,6 @@ def eval_model(record, features, captions, word_to_index, index_to_word, max_len
     save_score(score, score_path)
     score["score_path"] = str(score_path)
     return score
-
 
 def eval_grid(records, features, captions, word_to_index, index_to_word, max_length, report_dir="reports/tables"):
     ensure_dir(report_dir)
@@ -145,12 +138,10 @@ def eval_grid(records, features, captions, word_to_index, index_to_word, max_len
     save_json(scores, Path(report_dir) / "rnn_scores.json")
     return scores
 
-
 def best_score(scores, key="bleu4"):
     if not scores:
         return None
     return max(scores, key=lambda score: score.get(key, 0.0))
-
 
 def eval_lengths(model_path, features, captions, word_to_index, index_to_word, lengths, report_dir="reports/tables"):
     model = load_model(model_path)

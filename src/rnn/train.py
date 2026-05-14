@@ -1,9 +1,9 @@
 from pathlib import Path
 
-from common.dummy_data import teacher_pairs
 from common.io import ensure_dir
 
 from .keras_models import build_preinject, compile_model
+from .sequences import teacher_pairs
 
 
 def cap_len(config):

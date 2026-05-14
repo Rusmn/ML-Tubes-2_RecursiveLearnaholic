@@ -3,12 +3,10 @@ from contextlib import contextmanager
 
 import numpy as np
 
-
 def _as_tokens(sentence):
     if isinstance(sentence, str):
         return sentence.split()
     return list(sentence)
-
 
 def bleu4_score(references, prediction):
     reference_tokens = [_as_tokens(reference) for reference in references]
@@ -25,7 +23,6 @@ def bleu4_score(references, prediction):
         reference_vocab = set(token for reference in reference_tokens for token in reference)
         matches = sum(token in reference_vocab for token in prediction_tokens)
         return float(matches / max(len(prediction_tokens), 1))
-
 
 def meteor_safe(references, prediction):
     reference_tokens = [_as_tokens(reference) for reference in references]
@@ -47,7 +44,6 @@ def meteor_safe(references, prediction):
             return 0.0
         return float((2 * precision * recall) / (precision + recall))
 
-
 def score_set(references, predictions):
     if len(references) != len(predictions):
         raise ValueError("references and predictions must have the same length.")
@@ -58,7 +54,6 @@ def score_set(references, predictions):
         "bleu4": float(np.mean(bleu_scores)) if bleu_scores else 0.0,
         "meteor": float(np.mean(meteor_scores)) if meteor_scores else 0.0,
     }
-
 
 @contextmanager
 def timer():

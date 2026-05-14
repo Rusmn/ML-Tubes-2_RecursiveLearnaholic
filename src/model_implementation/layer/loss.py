@@ -1,4 +1,4 @@
-from model_implementation.autograd.autograd import Value
+from common.autograd import Value
 import numpy as np
 
 # base class

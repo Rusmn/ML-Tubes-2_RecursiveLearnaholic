@@ -1,4 +1,4 @@
-from model_implementation.autograd.autograd import Value
+from common.autograd import Value
 from model_implementation.layer.module import Module
 
 class linear(Module):
@@ -48,8 +48,6 @@ class leaky_relu(Module):
     
     def parameters(self):
         return []
-
-
 class gelu(Module):
     def forward(self, x):
         x = x if isinstance(x, Value) else Value(x)

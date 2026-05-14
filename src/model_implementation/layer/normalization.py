@@ -1,6 +1,6 @@
 import numpy as np
 
-from model_implementation.autograd.autograd import Value
+from common.autograd import Value
 from model_implementation.layer.module import Module
 
 class RMSNorm(Module):

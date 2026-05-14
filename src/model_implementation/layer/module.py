@@ -1,5 +1,5 @@
-from common.autograd.autograd import Value
 import numpy as np
+from common.autograd import Value
 
 # parent dari semua yang di layer FFNN
 class Module:

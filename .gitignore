@@ -17,6 +17,7 @@ env/
 *.pkl
 *.h5
 *.keras
+*.npy
 
 seg_pred/
 seg_test/

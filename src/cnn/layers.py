@@ -9,13 +9,11 @@ class Conv2D(Module):
         self.kernel_size = kernel_size if isinstance(kernel_size, tuple) else (kernel_size, kernel_size)
         self.stride = stride
         self.padding = padding
-        
-        self.weight = None # Shape: (kH, kW, C_in, C_out)
-        self.bias = None   # Shape: (C_out,)
+        self.weight = None # (kH, kW, C_in, C_out)
+        self.bias = None   # (C_out,)
 
     def forward(self, x):
-        # x shape: (N, H, W, C_in)
-        if isinstance(x, Value): x = x.data
+        if hasattr(x, 'data'): x = x.data
         
         N, H, W, C_in = x.shape
         kH, kW = self.kernel_size
@@ -30,7 +28,7 @@ class Conv2D(Module):
         for i in range(out_H):
             for j in range(out_W):
                 h_start, w_start = i * self.stride, j * self.stride
-                patch = x[:, h_start:h_start+kH, w_start:w_start+kW, :] # (N, kH, kW, C_in)
+                patch = x[:, h_start:h_start+kH, w_start:w_start+kW, :]
                 output[:, i, j, :] = np.tensordot(patch, self.weight, axes=((1, 2, 3), (0, 1, 2))) + self.bias
                 
         return output
@@ -41,13 +39,13 @@ class LocallyConnected2D(Module):
         super().__init__()
         self.kernel_size = kernel_size if isinstance(kernel_size, tuple) else (kernel_size, kernel_size)
         self.stride = stride
-        self.input_size = input_size # (H, W)
-        
-        # Shape: (out_H * out_W, kH * kW * C_in, C_out)
+        self.input_size = input_size
         self.weight = None 
-        self.bias = None # Shape: (out_H, out_W, C_out)
+        self.bias = None 
 
     def forward(self, x):
+        if hasattr(x, 'data'): x = x.data
+
         N, H, W, C_in = x.shape
         kH, kW = self.kernel_size
         out_H = (H - kH) // self.stride + 1
@@ -55,13 +53,10 @@ class LocallyConnected2D(Module):
         C_out = self.bias.shape[-1]
 
         output = np.zeros((N, out_H, out_W, C_out))
-        # Non-shared parameters: weight depends on the spatial position (i, j)
         for i in range(out_H):
             for j in range(out_W):
                 h_s, w_s = i * self.stride, j * self.stride
                 patch = x[:, h_s:h_s+kH, w_s:w_s+kW, :].reshape(N, -1)
-                
-                # Weight index for position (i, j)
                 idx = i * out_W + j
                 output[:, i, j, :] = (patch @ self.weight[idx]) + self.bias[i, j]
         return output
@@ -74,6 +69,7 @@ class MaxPooling2D(Module):
         self.stride = stride
 
     def forward(self, x):
+        if hasattr(x, 'data'): x = x.data
         N, H, W, C = x.shape
         kH, kW = self.pool_size
         out_H = (H - kH) // self.stride + 1
@@ -117,4 +113,5 @@ class GlobalMaxPooling2D(Module):
 # Flatten
 class Flatten(Module):
     def forward(self, x):
+        if hasattr(x, 'data'): x = x.data
         return x.reshape(x.shape[0], -1)

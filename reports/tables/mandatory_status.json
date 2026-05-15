@@ -1,0 +1,13 @@
+{
+  "bleu_meteor_runtime": false,
+  "caption_preprocessing": false,
+  "cnn_16_shared_experiments": false,
+  "cnn_keras_vs_scratch": false,
+  "cnn_shared_vs_non_shared": false,
+  "feature_caption_alignment": false,
+  "flickr8k_features": false,
+  "keras_vs_scratch_decoder": false,
+  "length_study_3_variants": false,
+  "qualitative_10_examples": false,
+  "six_rnn_six_lstm": false
+}

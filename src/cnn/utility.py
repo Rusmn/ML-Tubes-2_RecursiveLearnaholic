@@ -19,13 +19,15 @@ def image_paths(root_dir, extensions=(".jpg", ".jpeg", ".png")):
         paths.extend(root_path.rglob(f"*{extension}"))
     return sorted(path for path in paths if path.is_file())
 
-def feature_extractor(paths, keras_encoder, save_path, target_size=(224, 224), batch_size=32, image_id_path=None):
+def feature_extractor(paths, keras_encoder, save_path, target_size=(224, 224), batch_size=32, image_id_path=None, preprocess_fn=None):
     ordered_paths = [pathlib.Path(path) for path in paths]
     features = []
 
     for start in range(0, len(ordered_paths), int(batch_size)):
         batch_paths = ordered_paths[start:start + int(batch_size)]
         images = batch_loader(batch_paths, target_size=target_size)
+        if preprocess_fn is not None:
+            images = preprocess_fn(images * 255.0)
         batch_features = keras_encoder.predict(images, verbose=0)
         features.append(np.asarray(batch_features))
 

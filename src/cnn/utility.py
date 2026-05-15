@@ -1,6 +1,6 @@
 import numpy as np
 from PIL import Image
-import pathlib as Path
+import pathlib
 
 def image_loader(path, target_size=(224, 224)):
     """Loads a single image, resizes, and normalizes pixel values."""
@@ -13,14 +13,14 @@ def batch_loader(paths, target_size=(224, 224)):
     return np.stack([image_loader(path, target_size) for path in paths]).astype("float32")
 
 def image_paths(root_dir, extensions=(".jpg", ".jpeg", ".png")):
-    root_path = Path(root_dir)
+    root_path = pathlib.Path(root_dir)
     paths = []
     for extension in extensions:
         paths.extend(root_path.rglob(f"*{extension}"))
     return sorted(path for path in paths if path.is_file())
 
 def feature_extractor(paths, keras_encoder, save_path, target_size=(224, 224), batch_size=32, image_id_path=None):
-    ordered_paths = [Path(path) for path in paths]
+    ordered_paths = [pathlib.Path(path) for path in paths]
     features = []
 
     for start in range(0, len(ordered_paths), int(batch_size)):
@@ -34,12 +34,12 @@ def feature_extractor(paths, keras_encoder, save_path, target_size=(224, 224), b
     else:
         feature_array = np.empty((0, 0), dtype="float32")
 
-    output_path = Path(save_path)
+    output_path = pathlib.Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     np.save(output_path, feature_array)
 
     if image_id_path is not None:
-        id_path = Path(image_id_path)
+        id_path = pathlib.Path(image_id_path)
         id_path.parent.mkdir(parents=True, exist_ok=True)
         ids = [path.stem for path in ordered_paths]
         id_path.write_text("\n".join(ids), encoding="utf-8")

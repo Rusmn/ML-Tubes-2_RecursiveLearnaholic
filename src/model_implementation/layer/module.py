@@ -1,4 +1,4 @@
-from common.autograd.autograd import Value
+from common.autograd import Value
 import numpy as np
 
 # parent dari semua yang di layer FFNN

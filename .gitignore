@@ -9,6 +9,11 @@ env/
 
 # Notebook state
 .ipynb_checkpoints/
+**/.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# Local Jupyter runtime/config clutter
+.jupyter/
 
 # OS files
 .DS_Store
@@ -17,8 +22,13 @@ env/
 *.pkl
 *.h5
 *.keras
+*.npz
+*.npy
+*.ckpt
+*.pt
+*.pth
+*.onnx
 
 seg_pred/
 seg_test/
 seg_train/
-

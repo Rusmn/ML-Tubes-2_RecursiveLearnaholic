@@ -1,7 +1,8 @@
 import numpy as np
 from model_implementation.layer.module import Module
-from common.autograd.autograd import Value
+from common.autograd import Value
 
+# Shared Parameter
 class Conv2D(Module):
     def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0):
         super().__init__()
@@ -34,6 +35,38 @@ class Conv2D(Module):
                 
         return output
 
+# Non-shared Parameter
+class LocallyConnected2D(Module):
+    def __init__(self, in_channels, out_channels, input_size, kernel_size, stride=1):
+        super().__init__()
+        self.kernel_size = kernel_size if isinstance(kernel_size, tuple) else (kernel_size, kernel_size)
+        self.stride = stride
+        self.input_size = input_size # (H, W)
+        
+        # Shape: (out_H * out_W, kH * kW * C_in, C_out)
+        self.weight = None 
+        self.bias = None # Shape: (out_H, out_W, C_out)
+
+    def forward(self, x):
+        N, H, W, C_in = x.shape
+        kH, kW = self.kernel_size
+        out_H = (H - kH) // self.stride + 1
+        out_W = (W - kW) // self.stride + 1
+        C_out = self.bias.shape[-1]
+
+        output = np.zeros((N, out_H, out_W, C_out))
+        # Non-shared parameters: weight depends on the spatial position (i, j)
+        for i in range(out_H):
+            for j in range(out_W):
+                h_s, w_s = i * self.stride, j * self.stride
+                patch = x[:, h_s:h_s+kH, w_s:w_s+kW, :].reshape(N, -1)
+                
+                # Weight index for position (i, j)
+                idx = i * out_W + j
+                output[:, i, j, :] = (patch @ self.weight[idx]) + self.bias[i, j]
+        return output
+
+# Sliding window pooling
 class MaxPooling2D(Module):
     def __init__(self, pool_size=(2, 2), stride=2):
         super().__init__()
@@ -53,6 +86,35 @@ class MaxPooling2D(Module):
                 output[:, i, j, :] = np.max(x[:, h_s:h_s+kH, w_s:w_s+kW, :], axis=(1, 2))
         return output
 
+class AveragePooling2D(Module):
+    def __init__(self, pool_size=(2, 2), stride=2):
+        super().__init__()
+        self.pool_size = pool_size
+        self.stride = stride
+
+    def forward(self, x):
+        N, H, W, C = x.shape
+        kH, kW = self.pool_size
+        out_H = (H - kH) // self.stride + 1
+        out_W = (W - kW) // self.stride + 1
+        
+        output = np.zeros((N, out_H, out_W, C))
+        for i in range(out_H):
+            for j in range(out_W):
+                h_s, w_s = i * self.stride, j * self.stride
+                output[:, i, j, :] = np.mean(x[:, h_s:h_s+kH, w_s:w_s+kW, :], axis=(1, 2))
+        return output
+
+# Global Pooling
+class GlobalAveragePooling2D(Module):
+    def forward(self, x):
+        return np.mean(x, axis=(1, 2))
+    
+class GlobalMaxPooling2D(Module):
+    def forward(self, x):
+        return np.max(x, axis=(1, 2))
+
+# Flatten
 class Flatten(Module):
     def forward(self, x):
         return x.reshape(x.shape[0], -1)

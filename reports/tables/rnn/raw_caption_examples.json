@@ -1,0 +1,27 @@
+[
+  {
+    "image_id": "3353278454_2f3a4d0bbc.jpg",
+    "rnn_scratch_caption": "a man in a leather jacket and tie is standing in front of a crowd of people",
+    "lstm_scratch_caption": "a man in a white shirt is standing in front of a crowd of people"
+  },
+  {
+    "image_id": "536537638_f5ee42410b.jpg",
+    "rnn_scratch_caption": "a woman in a black shirt and tie is smiling",
+    "lstm_scratch_caption": "a man in a white shirt and a black hat is smiling"
+  },
+  {
+    "image_id": "455611732_d65bf3e976.jpg",
+    "rnn_scratch_caption": "a man in a red jacket is riding a mountain",
+    "lstm_scratch_caption": "a man is riding a bike down a dirt road"
+  },
+  {
+    "image_id": "2768972186_92787cd523.jpg",
+    "rnn_scratch_caption": "two dogs are playing in a field",
+    "lstm_scratch_caption": "two dogs are playing with a toy"
+  },
+  {
+    "image_id": "2664103423_c539f61016.jpg",
+    "rnn_scratch_caption": "a man in a wetsuit is surfing",
+    "lstm_scratch_caption": "a man is riding a bike down a snowy hill"
+  }
+]

@@ -43,7 +43,7 @@ def feature_extractor(paths, keras_encoder, save_path, target_size=(224, 224), b
     if image_id_path is not None:
         id_path = pathlib.Path(image_id_path)
         id_path.parent.mkdir(parents=True, exist_ok=True)
-        ids = [path.stem for path in ordered_paths]
+        ids = [path.name for path in ordered_paths]
         id_path.write_text("\n".join(ids), encoding="utf-8")
 
     return feature_array

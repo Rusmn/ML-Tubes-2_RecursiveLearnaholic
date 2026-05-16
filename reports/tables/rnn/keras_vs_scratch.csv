@@ -1,0 +1,5 @@
+bleu4,epochs,eval_images,hidden_size,implementation,meteor,model_path,recur_layers,recur_type,time_s,weight_path
+0.15947342827537359,10.0,1012,512,keras,0.34777877605447244,models/rnn/rnn_layers1_hidden512_len33.keras,1,rnn,42.22139263153076,models/rnn/rnn_layers1_hidden512_len33.npz
+0.1538947009474175,10.0,1012,512,keras,0.3564692713755644,models/rnn/lstm_layers1_hidden512_len33.keras,1,lstm,35.99493432044983,models/rnn/lstm_layers1_hidden512_len33.npz
+0.15947342827537359,,1012,512,scratch,0.34777877605447244,models/rnn/rnn_layers1_hidden512_len33.keras,1,rnn,156.8534300327301,models/rnn/rnn_layers1_hidden512_len33.npz
+0.1538947009474175,,1012,512,scratch,0.3564692713755644,models/rnn/lstm_layers1_hidden512_len33.keras,1,lstm,209.97866368293762,models/rnn/lstm_layers1_hidden512_len33.npz

@@ -1,0 +1,35 @@
+[
+  {
+    "bleu4": 0.16757740605076604,
+    "eval_images": 1012,
+    "hidden_size": 512,
+    "implementation": "keras",
+    "max_length": 10,
+    "meteor": 0.339327929682634,
+    "recur_layers": 1,
+    "recur_type": "rnn",
+    "time_s": 6.596178293228149
+  },
+  {
+    "bleu4": 0.15947342827537359,
+    "eval_images": 1012,
+    "hidden_size": 512,
+    "implementation": "keras",
+    "max_length": 20,
+    "meteor": 0.34777877605447244,
+    "recur_layers": 1,
+    "recur_type": "rnn",
+    "time_s": 17.829168796539307
+  },
+  {
+    "bleu4": 0.15947342827537359,
+    "eval_images": 1012,
+    "hidden_size": 512,
+    "implementation": "keras",
+    "max_length": 33,
+    "meteor": 0.34777877605447244,
+    "recur_layers": 1,
+    "recur_type": "rnn",
+    "time_s": 25.832090377807617
+  }
+]

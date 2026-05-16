@@ -68,12 +68,6 @@ The required experiments include:
 8. Testing at least 3 maximum caption length variations  
 9. Showing qualitative analysis for at least 10 images with generated and ground truth captions  
 
-## Documentation
-
-The assignment specification requires a report containing the problem description, implementation explanation, forward propagation explanation, experiment results, conclusion, task distribution, references, and AI usage form.
-
-The README provides the repository overview, setup instructions, run instructions, and task distribution. The final report should be placed in the documentation folder when prepared for submission.
-
 ## Requirements
 
 1. Python 3.10 or higher

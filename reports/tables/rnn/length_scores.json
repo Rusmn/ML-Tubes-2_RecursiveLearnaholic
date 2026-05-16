@@ -1,35 +1,29 @@
 [
   {
-    "bleu4": 0.16757740605076604,
-    "eval_images": 1012,
-    "hidden_size": 512,
-    "implementation": "keras",
+    "bleu4": 0.1506824705194339,
+    "meteor": 0.2595960063164152,
+    "runtime_seconds": 17.77483320236206,
+    "samples": 1012,
     "max_length": 10,
-    "meteor": 0.339327929682634,
-    "recur_layers": 1,
-    "recur_type": "rnn",
-    "time_s": 6.596178293228149
+    "implementation": "keras",
+    "recur_type": "lstm"
   },
   {
-    "bleu4": 0.15947342827537359,
-    "eval_images": 1012,
-    "hidden_size": 512,
-    "implementation": "keras",
+    "bleu4": 0.14305302711352474,
+    "meteor": 0.27103330834526046,
+    "runtime_seconds": 48.34945297241211,
+    "samples": 1012,
     "max_length": 20,
-    "meteor": 0.34777877605447244,
-    "recur_layers": 1,
-    "recur_type": "rnn",
-    "time_s": 17.829168796539307
+    "implementation": "keras",
+    "recur_type": "lstm"
   },
   {
-    "bleu4": 0.15947342827537359,
-    "eval_images": 1012,
-    "hidden_size": 512,
-    "implementation": "keras",
+    "bleu4": 0.14303574903058314,
+    "meteor": 0.27103330834526046,
+    "runtime_seconds": 93.92332696914673,
+    "samples": 1012,
     "max_length": 33,
-    "meteor": 0.34777877605447244,
-    "recur_layers": 1,
-    "recur_type": "rnn",
-    "time_s": 25.832090377807617
+    "implementation": "keras",
+    "recur_type": "lstm"
   }
 ]

@@ -2,9 +2,9 @@
   "max_sequence_length": 34,
   "vocab_size": 7793,
   "split_images": {
-    "test": 1012,
     "train": 6068,
-    "val": 1011
+    "val": 1011,
+    "test": 1012
   },
-  "source": "existing_processed_arrays"
+  "source": "rebuilt"
 }

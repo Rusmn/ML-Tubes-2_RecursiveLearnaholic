@@ -1,26 +1,26 @@
 [
   {
-    "bleu4": 0.15947342827537359,
-    "eval_images": 1012,
-    "hidden_size": 512,
+    "bleu4": 0.13942994292073765,
+    "meteor": 0.25141083128403585,
+    "runtime_seconds": 61.02088809013367,
+    "samples": 1012,
     "implementation": "scratch",
-    "meteor": 0.34777877605447244,
-    "model_path": "models/rnn/rnn_layers1_hidden512_len33.keras",
-    "recur_layers": 1,
     "recur_type": "rnn",
-    "time_s": 156.8534300327301,
+    "recur_layers": 1,
+    "hidden_size": 512,
+    "model_path": "models/rnn/rnn_layers1_hidden512_len33.keras",
     "weight_path": "models/rnn/rnn_layers1_hidden512_len33.npz"
   },
   {
-    "bleu4": 0.1538947009474175,
-    "eval_images": 1012,
-    "hidden_size": 512,
+    "bleu4": 0.14303574903058314,
+    "meteor": 0.27103330834526046,
+    "runtime_seconds": 114.72957110404968,
+    "samples": 1012,
     "implementation": "scratch",
-    "meteor": 0.3564692713755644,
-    "model_path": "models/rnn/lstm_layers1_hidden512_len33.keras",
-    "recur_layers": 1,
     "recur_type": "lstm",
-    "time_s": 209.97866368293762,
+    "recur_layers": 1,
+    "hidden_size": 512,
+    "model_path": "models/rnn/lstm_layers1_hidden512_len33.keras",
     "weight_path": "models/rnn/lstm_layers1_hidden512_len33.npz"
   }
 ]

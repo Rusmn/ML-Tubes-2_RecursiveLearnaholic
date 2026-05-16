@@ -66,7 +66,7 @@ class LocallyConnected2D(Module):
                 patch = x[:, h_s:h_s+kH, w_s:w_s+kW, :].reshape(N, -1)
                 idx = i * out_W + j
                 output[:, i, j, :] = (patch @ self.weight[idx]) + self.bias[i, j]
-        return output
+        return apply_activation(output, getattr(self, "activation", None))
 
 # Sliding window pooling
 class MaxPooling2D(Module):

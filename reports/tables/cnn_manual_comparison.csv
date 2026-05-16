@@ -1,4 +1,4 @@
-implementation,macro_f1,runtime_seconds,params,numerical_match,config,macro_f1_small_batch,shared_params,parameter_explosion,shared_parameters
-keras_shared,0.7567939701676262,0.9458870887756348,601350,True,,,,,
-scratch_numpy_shared,0.7567939701676262,8.373746871948242,601350,True,,,,,
-scratch_numpy_non_shared,,,1079445702,,"{'num_layers': 3, 'filters': 64, 'kernel_size': 3, 'pooling_type': 'max'}",0.25,601350.0,1795.0373359940136,False
+implementation,macro_f1,runtime_seconds,params,numerical_match,shared_parameters,sample_size,parameter_explosion
+keras_shared,0.7777777777777777,,601350,True,True,6,
+scratch_numpy_shared,0.7777777777777777,1.2215909957885742,601350,True,True,6,
+scratch_numpy_non_shared,0.7777777777777777,2.8690340518951416,1079445702,True,False,6,1795.0373359940136

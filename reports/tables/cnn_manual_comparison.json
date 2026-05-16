@@ -1,0 +1,30 @@
+[
+  {
+    "implementation": "keras_shared",
+    "macro_f1": 0.7567939701676262,
+    "numerical_match": true,
+    "params": 601350,
+    "runtime_seconds": 1.187840223312378
+  },
+  {
+    "implementation": "scratch_numpy_shared",
+    "macro_f1": 0.7567939701676262,
+    "numerical_match": true,
+    "params": 601350,
+    "runtime_seconds": 8.984304189682007
+  },
+  {
+    "config": {
+      "filters": 64,
+      "kernel_size": 3,
+      "num_layers": 3,
+      "pooling_type": "max"
+    },
+    "implementation": "scratch_numpy_non_shared",
+    "macro_f1_small_batch": 0.25,
+    "parameter_explosion": 1795.0373359940136,
+    "params": 1079445702,
+    "shared_parameters": false,
+    "shared_params": 601350
+  }
+]

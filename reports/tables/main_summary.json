@@ -1,0 +1,11 @@
+{
+  "captions_ready": false,
+  "cnn_experiments": 0,
+  "cnn_scratch_rows": 0,
+  "features_ready": false,
+  "keras_scores": 0,
+  "length_scores": 0,
+  "manual_scores": 0,
+  "qualitative_rows": 0,
+  "rnn_records": 0
+}

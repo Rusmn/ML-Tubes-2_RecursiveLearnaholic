@@ -1,0 +1,4 @@
+implementation,macro_f1,runtime_seconds,params,numerical_match,config,macro_f1_small_batch,shared_params,parameter_explosion,shared_parameters
+keras_shared,0.7567939701676262,1.187840223312378,601350,True,,,,,
+scratch_numpy_shared,0.7567939701676262,8.984304189682007,601350,True,,,,,
+scratch_numpy_non_shared,,,1079445702,,"{'num_layers': 3, 'filters': 64, 'kernel_size': 3, 'pooling_type': 'max'}",0.25,601350.0,1795.0373359940136,False

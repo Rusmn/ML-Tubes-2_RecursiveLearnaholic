@@ -1,0 +1,14 @@
+{
+  "config": {
+    "filters": 64,
+    "kernel_size": 3,
+    "num_layers": 3,
+    "pooling_type": "max"
+  },
+  "implementation": "scratch_numpy_non_shared",
+  "macro_f1_small_batch": 0.25,
+  "parameter_explosion": 1795.0373359940136,
+  "params": 1079445702,
+  "shared_parameters": false,
+  "shared_params": 601350
+}

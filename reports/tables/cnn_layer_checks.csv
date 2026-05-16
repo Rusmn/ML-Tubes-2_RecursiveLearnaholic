@@ -1,0 +1,7 @@
+layer_index,layer,max_abs_diff,match
+0,Conv2D,2.384185791015625e-07,True
+1,Conv2D,7.623006768042728e-07,True
+2,MaxPooling2D,7.623006768042728e-07,True
+3,Conv2D,2.134334151193684e-06,True
+4,MaxPooling2D,1.630196134749795e-06,True
+5,Flatten,1.630196134749795e-06,True

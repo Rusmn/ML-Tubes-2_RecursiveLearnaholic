@@ -1,0 +1,38 @@
+[
+  {
+    "layer": "Conv2D",
+    "layer_index": 0,
+    "match": true,
+    "max_abs_diff": 2.384185791015625e-07
+  },
+  {
+    "layer": "Conv2D",
+    "layer_index": 1,
+    "match": true,
+    "max_abs_diff": 7.623006768042728e-07
+  },
+  {
+    "layer": "MaxPooling2D",
+    "layer_index": 2,
+    "match": true,
+    "max_abs_diff": 7.623006768042728e-07
+  },
+  {
+    "layer": "Conv2D",
+    "layer_index": 3,
+    "match": true,
+    "max_abs_diff": 2.134334151193684e-06
+  },
+  {
+    "layer": "MaxPooling2D",
+    "layer_index": 4,
+    "match": true,
+    "max_abs_diff": 1.630196134749795e-06
+  },
+  {
+    "layer": "Flatten",
+    "layer_index": 5,
+    "match": true,
+    "max_abs_diff": 1.630196134749795e-06
+  }
+]

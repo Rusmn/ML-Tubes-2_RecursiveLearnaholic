@@ -13,7 +13,7 @@ class Conv2D(Module):
         self.bias = None   # (C_out,)
 
     def forward(self, x):
-        if hasattr(x, 'data'): x = x.data
+        if isinstance(x, Value): x = x.data
         
         N, H, W, C_in = x.shape
         kH, kW = self.kernel_size
@@ -44,13 +44,20 @@ class LocallyConnected2D(Module):
         self.bias = None 
 
     def forward(self, x):
-        if hasattr(x, 'data'): x = x.data
+        if isinstance(x, Value): x = x.data
 
         N, H, W, C_in = x.shape
         kH, kW = self.kernel_size
-        out_H = (H - kH) // self.stride + 1
-        out_W = (W - kW) // self.stride + 1
+        out_H = (H + 2 * self.padding - kH) // self.stride + 1
+        out_W = (W + 2 * self.padding - kW) // self.stride + 1
         C_out = self.bias.shape[-1]
+
+        if self.padding > 0:
+            x = np.pad(
+                x,
+                ((0, 0), (self.padding, self.padding), (self.padding, self.padding), (0, 0)),
+                mode="constant",
+            )
 
         output = np.zeros((N, out_H, out_W, C_out))
         for i in range(out_H):
@@ -69,7 +76,7 @@ class MaxPooling2D(Module):
         self.stride = stride
 
     def forward(self, x):
-        if hasattr(x, 'data'): x = x.data
+        if isinstance(x, Value): x = x.data
         N, H, W, C = x.shape
         kH, kW = self.pool_size
         out_H = (H - kH) // self.stride + 1
@@ -113,7 +120,7 @@ class GlobalMaxPooling2D(Module):
 # Flatten
 class Flatten(Module):
     def forward(self, x):
-        if hasattr(x, 'data'): x = x.data
+        if isinstance(x, Value): x = x.data
         return x.reshape(x.shape[0], -1)
 
 class Dense(Module):

@@ -1,0 +1,17 @@
+experiment_id,config,final_val_acc,history_path,keras_weight_path
+0,"{'num_layers': 2, 'filters': 32, 'kernel_size': 3, 'pooling_type': 'max'}",0.71036696434021,../models/cnn/history_exp_0.pkl,../models/cnn/keras_weights_exp_0.npy
+1,"{'num_layers': 2, 'filters': 32, 'kernel_size': 3, 'pooling_type': 'avg'}",0.7506234645843506,../models/cnn/history_exp_1.pkl,../models/cnn/keras_weights_exp_1.npy
+2,"{'num_layers': 2, 'filters': 32, 'kernel_size': 5, 'pooling_type': 'max'}",0.6982543468475342,../models/cnn/history_exp_2.pkl,../models/cnn/keras_weights_exp_2.npy
+3,"{'num_layers': 2, 'filters': 32, 'kernel_size': 5, 'pooling_type': 'avg'}",0.6861417889595032,../models/cnn/history_exp_3.pkl,../models/cnn/keras_weights_exp_3.npy
+4,"{'num_layers': 2, 'filters': 64, 'kernel_size': 3, 'pooling_type': 'max'}",0.7128607034683228,../models/cnn/history_exp_4.pkl,../models/cnn/keras_weights_exp_4.npy
+5,"{'num_layers': 2, 'filters': 64, 'kernel_size': 3, 'pooling_type': 'avg'}",0.7285358309745789,../models/cnn/history_exp_5.pkl,../models/cnn/keras_weights_exp_5.npy
+6,"{'num_layers': 2, 'filters': 64, 'kernel_size': 5, 'pooling_type': 'max'}",0.6647666692733765,../models/cnn/history_exp_6.pkl,../models/cnn/keras_weights_exp_6.npy
+7,"{'num_layers': 2, 'filters': 64, 'kernel_size': 5, 'pooling_type': 'avg'}",0.6768792271614075,../models/cnn/history_exp_7.pkl,../models/cnn/keras_weights_exp_7.npy
+8,"{'num_layers': 3, 'filters': 32, 'kernel_size': 3, 'pooling_type': 'max'}",0.7363733649253845,../models/cnn/history_exp_8.pkl,../models/cnn/keras_weights_exp_8.npy
+9,"{'num_layers': 3, 'filters': 32, 'kernel_size': 3, 'pooling_type': 'avg'}",0.7299607992172241,../models/cnn/history_exp_9.pkl,../models/cnn/keras_weights_exp_9.npy
+10,"{'num_layers': 3, 'filters': 32, 'kernel_size': 5, 'pooling_type': 'max'}",0.7285358309745789,../models/cnn/history_exp_10.pkl,../models/cnn/keras_weights_exp_10.npy
+11,"{'num_layers': 3, 'filters': 32, 'kernel_size': 5, 'pooling_type': 'avg'}",0.7335233092308044,../models/cnn/history_exp_11.pkl,../models/cnn/keras_weights_exp_11.npy
+12,"{'num_layers': 3, 'filters': 64, 'kernel_size': 3, 'pooling_type': 'max'}",0.7666547894477844,../models/cnn/history_exp_12.pkl,../models/cnn/keras_weights_exp_12.npy
+13,"{'num_layers': 3, 'filters': 64, 'kernel_size': 3, 'pooling_type': 'avg'}",0.7285358309745789,../models/cnn/history_exp_13.pkl,../models/cnn/keras_weights_exp_13.npy
+14,"{'num_layers': 3, 'filters': 64, 'kernel_size': 5, 'pooling_type': 'max'}",0.7331671118736267,../models/cnn/history_exp_14.pkl,../models/cnn/keras_weights_exp_14.npy
+15,"{'num_layers': 3, 'filters': 64, 'kernel_size': 5, 'pooling_type': 'avg'}",0.7388671040534973,../models/cnn/history_exp_15.pkl,../models/cnn/keras_weights_exp_15.npy

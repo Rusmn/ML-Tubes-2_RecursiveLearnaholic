@@ -1,0 +1,13 @@
+bleu4,epochs,eval_images,hidden_size,implementation,meteor,model_path,recur_layers,recur_type,time_s,weight_path
+0.11838037838076865,10,1012,128,keras,0.3172655016320113,models/rnn/rnn_layers1_hidden128_len33.keras,1,rnn,45.36809277534485,models/rnn/rnn_layers1_hidden128_len33.npz
+0.15947342827537359,10,1012,512,keras,0.34777877605447244,models/rnn/rnn_layers1_hidden512_len33.keras,1,rnn,42.22139263153076,models/rnn/rnn_layers1_hidden512_len33.npz
+0.10542729592208956,10,1012,128,keras,0.3022545243641703,models/rnn/rnn_layers2_hidden128_len33.keras,2,rnn,68.292160987854,models/rnn/rnn_layers2_hidden128_len33.npz
+0.13618610982399149,10,1012,512,keras,0.3323465328279548,models/rnn/rnn_layers2_hidden512_len33.keras,2,rnn,75.8774721622467,models/rnn/rnn_layers2_hidden512_len33.npz
+0.08954110820228452,10,1012,128,keras,0.30496230543214903,models/rnn/rnn_layers3_hidden128_len33.keras,3,rnn,112.62256836891174,models/rnn/rnn_layers3_hidden128_len33.npz
+0.1327853892924849,10,1012,512,keras,0.3166405923935713,models/rnn/rnn_layers3_hidden512_len33.keras,3,rnn,74.09317684173584,models/rnn/rnn_layers3_hidden512_len33.npz
+0.07952328863107265,10,1012,128,keras,0.28756386324745425,models/rnn/lstm_layers1_hidden128_len33.keras,1,lstm,34.820462226867676,models/rnn/lstm_layers1_hidden128_len33.npz
+0.1538947009474175,10,1012,512,keras,0.3564692713755644,models/rnn/lstm_layers1_hidden512_len33.keras,1,lstm,35.99493432044983,models/rnn/lstm_layers1_hidden512_len33.npz
+0.11137163798220952,10,1012,128,keras,0.30474556957445076,models/rnn/lstm_layers2_hidden128_len33.keras,2,lstm,30.750601530075073,models/rnn/lstm_layers2_hidden128_len33.npz
+0.13243769666407548,10,1012,512,keras,0.34723261594783095,models/rnn/lstm_layers2_hidden512_len33.keras,2,lstm,48.79072952270508,models/rnn/lstm_layers2_hidden512_len33.npz
+0.0918403755621328,10,1012,128,keras,0.28263243729092685,models/rnn/lstm_layers3_hidden128_len33.keras,3,lstm,21.33162569999695,models/rnn/lstm_layers3_hidden128_len33.npz
+0.11011100024215979,10,1012,512,keras,0.32116098355497796,models/rnn/lstm_layers3_hidden512_len33.keras,3,lstm,47.335904359817505,models/rnn/lstm_layers3_hidden512_len33.npz

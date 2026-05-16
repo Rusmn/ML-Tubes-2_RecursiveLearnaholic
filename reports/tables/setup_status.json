@@ -1,0 +1,15 @@
+{
+  "platform": "local",
+  "root": "/Users/rusmn/Kuliah/SEMESTER 6/Machine Learning/Tubes2/ML-Tubes-2_RecursiveLearnaholic",
+  "paths": {
+    "intel_train": "/Users/rusmn/Kuliah/SEMESTER 6/Machine Learning/Tubes2/ML-Tubes-2_RecursiveLearnaholic/data/raw/intel/seg_train",
+    "intel_test": "/Users/rusmn/Kuliah/SEMESTER 6/Machine Learning/Tubes2/ML-Tubes-2_RecursiveLearnaholic/data/raw/intel/seg_test",
+    "flickr_images": "/Users/rusmn/Kuliah/SEMESTER 6/Machine Learning/Tubes2/ML-Tubes-2_RecursiveLearnaholic/data/raw/flickr8k/Images",
+    "flickr_captions": "/Users/rusmn/Kuliah/SEMESTER 6/Machine Learning/Tubes2/ML-Tubes-2_RecursiveLearnaholic/data/raw/flickr8k/captions.txt"
+  },
+  "counts": {
+    "intel_train": 14034,
+    "intel_test": 3000,
+    "flickr_images": 8091
+  }
+}

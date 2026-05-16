@@ -1,0 +1,13 @@
+{
+  "keras_scores": 12,
+  "length_scores": 3,
+  "methodology": "image-level split before training; train-only vocabulary; test-only evaluation",
+  "qualitative_examples": 10,
+  "scratch_scores": 2,
+  "split_path": "data/processed/flickr8k/split.json",
+  "test_images": 1012,
+  "train_images": 6068,
+  "trained_or_found_models": 12,
+  "val_images": 1011,
+  "vocab_size": 7793
+}

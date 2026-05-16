@@ -1,0 +1,26 @@
+[
+  {
+    "bleu4": 0.15947342827537359,
+    "eval_images": 1012,
+    "hidden_size": 512,
+    "implementation": "scratch",
+    "meteor": 0.34777877605447244,
+    "model_path": "models/rnn/rnn_layers1_hidden512_len33.keras",
+    "recur_layers": 1,
+    "recur_type": "rnn",
+    "time_s": 156.8534300327301,
+    "weight_path": "models/rnn/rnn_layers1_hidden512_len33.npz"
+  },
+  {
+    "bleu4": 0.1538947009474175,
+    "eval_images": 1012,
+    "hidden_size": 512,
+    "implementation": "scratch",
+    "meteor": 0.3564692713755644,
+    "model_path": "models/rnn/lstm_layers1_hidden512_len33.keras",
+    "recur_layers": 1,
+    "recur_type": "lstm",
+    "time_s": 209.97866368293762,
+    "weight_path": "models/rnn/lstm_layers1_hidden512_len33.npz"
+  }
+]

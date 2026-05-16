@@ -9,71 +9,170 @@
 
 ## Description
 
-This repository contains the implementation for Convolutional Neural Network (CNN), Simple Recurrent Neural Network (Simple RNN), and Long Short-Term Memory (LSTM) models from scratch to fulfill the assignment Tugas Besar 2 Machine Learning.
+This repository contains the implementation for Convolutional Neural Network (CNN), Simple Recurrent Neural Network (Simple RNN), and Long Short-Term Memory (LSTM) models from scratch for IF3270 Machine Learning - Second Major Assignment.
 
-The assignment consists of two main tasks. The first task implements CNN forward propagation from scratch and compares it with Keras models on the Intel Image Classification dataset. The second task builds an image captioning pipeline on Flickr8k using a CNN encoder and Simple RNN/LSTM decoders with the pre-inject architecture from Show and Tell.
+The assignment consists of two main tasks. The first task implements CNN forward propagation from scratch and compares it with Keras models on the Intel Image Classification dataset. The second task builds an image captioning pipeline on Flickr8k using a frozen CNN encoder and Simple RNN/LSTM decoders with the pre-inject architecture.
+
+The notebooks are arranged as a runnable pipeline. Model training is skipped when trained artifacts already exist, while evaluation tables and visualizations can still be regenerated from the current local artifacts.
 
 ## Features
 
-- CNN utility functions for image loading, batch loading, and feature extraction  
-- CNN forward propagation from scratch with shared and non-shared parameters  
-- Required CNN layers: `Conv2D`, `LocallyConnected2D`, pooling layers, global pooling layers, `Flatten`, dense layer, `ReLU`, and `Softmax`  
-- Keras CNN training pipeline for 16 architecture variations  
-- Macro F1-score evaluation for CNN classification  
-- Caption preprocessing for Flickr8k, including cleaning, tokenization, vocabulary building, and padding  
-- Simple RNN and LSTM forward propagation from scratch  
-- Required recurrent layers: `EmbeddingLayer`, `SimpleRNNCell`, `LSTMCell`, `DenseProjectionLayer`, and `DenseOutputLayer`  
-- Keras pre-inject decoder for Simple RNN and LSTM  
-- Training grid for 6 Simple RNN variations and 6 LSTM variations  
-- Greedy caption decoding, BLEU-4, METEOR, runtime evaluation, and weight export to `.npz`  
+- Image loading, batch loading, and feature extraction utilities using PIL and NumPy.
+- CNN forward propagation from scratch with shared and non-shared parameters.
+- CNN layers: `Conv2D`, `LocallyConnected2D`, pooling layers, global pooling layers, `Flatten`, `Dense`, `ReLU`, and `Softmax`.
+- Keras CNN experiment grid with 16 architecture variations.
+- Macro F1-score evaluation for CNN classification.
+- CNN Keras vs manual NumPy comparison.
+- CNN shared vs non-shared parameter comparison.
+- Flickr8k caption preprocessing: cleaning, tokenization, vocabulary creation, padding, and split preparation.
+- Simple RNN and LSTM forward propagation from scratch.
+- RNN/LSTM layers: `EmbeddingLayer`, `SimpleRNNCell`, `LSTMCell`, `DenseProjectionLayer`, and `DenseOutputLayer`.
+- Keras pre-inject decoder for Simple RNN and LSTM.
+- Decoder experiment grid with 6 Simple RNN and 6 LSTM variations.
+- Greedy caption decoding, BLEU-4, METEOR, runtime evaluation, and weight export to `.npz`.
+- Separate visualization notebooks for CNN and RNN/LSTM report figures.
 
-The reusable implementation is placed in `src`, while notebooks are used only to run experiments, show visualizations, and save result artifacts.
+The reusable implementation is placed in `src`, while notebooks are used to run experiments, regenerate tables, create visualizations, and save result artifacts.
 
 ## Project Structure
 
-- `src/cnn` - CNN utilities, feature extraction, and CNN forward propagation modules  
-- `src/rnn` - caption preprocessing, recurrent layers, decoder training, decoding, evaluation, and weight export  
-- `src/common` - shared utilities for file I/O, metrics, and automatic differentiation  
-- `src/model_implementation` - reusable FFNN components from the previous assignment  
-- `notebooks` - numbered experiment notebooks and the combined `main.ipynb` pipeline  
-- `data/raw` - raw datasets such as Intel Image Classification and Flickr8k  
-- `data/features` - extracted Flickr8k image features  
-- `data/vocab` - vocabulary and encoded caption sequences  
-- `models/cnn` - trained CNN models and weights  
-- `models/rnn` - trained decoder models and exported `.npz` weights  
-- `reports/figures` - saved plots and qualitative visualization outputs  
-- `reports/tables` - saved scores, histories, and comparison tables  
-- `doc` - final report artifacts when required for submission  
+```text
+.
+├── README.md
+├── requirements.txt
+├── data
+│   ├── raw
+│   │   ├── intel/
+│   │   └── flickr8k/
+│   ├── features/
+│   ├── processed/flickr8k/
+│   └── vocab/
+├── models
+│   ├── cnn/
+│   └── rnn/
+├── notebooks
+│   ├── 00_Setup.ipynb
+│   ├── 01_Cnn.ipynb
+│   ├── 02_Caption.ipynb
+│   ├── 03_Decoder.ipynb
+│   ├── 04_Report.ipynb
+│   ├── 05_CnnVisual.ipynb
+│   ├── 06_RnnVisual.ipynb
+│   ├── 0X_cnn_visualization.ipynb
+│   ├── 0Y_rnn_visualization.ipynb
+│   └── main.ipynb
+├── reports
+│   ├── figures/
+│   └── tables/
+└── src
+    ├── cnn
+    │   ├── __init__.py
+    │   ├── layers.py
+    │   └── utility.py
+    ├── common
+    │   ├── __init__.py
+    │   ├── autograd.py
+    │   ├── io.py
+    │   └── metrics.py
+    ├── model_implementation
+    │   ├── __init__.py
+    │   ├── ffnn.py
+    │   ├── serialization.py
+    │   ├── trainer.py
+    │   ├── visualization.py
+    │   ├── layer/
+    │   └── optimizer/
+    └── rnn
+        ├── __init__.py
+        ├── caption_decoder.py
+        ├── dense.py
+        ├── embedding.py
+        ├── keras_models.py
+        ├── lstm.py
+        ├── preprocess.py
+        ├── rnn.py
+        ├── sequences.py
+        ├── train.py
+        └── weights.py
+```
+
+Large files such as datasets, `.npy`, `.pkl`, `.keras`, and `.npz` artifacts are ignored by Git. They can be regenerated by running the notebooks or reused locally when already available.
 
 ## Experiments
 
 The experiment workflow is organized into numbered notebooks:
 
-1. CNN training and evaluation (`01_cnn_training.ipynb`)  
-2. Caption preprocessing (`02_caption_preprocessing.ipynb`)  
-3. Flickr8k feature extraction (`03_feature_extraction.ipynb`)  
-4. Simple RNN and LSTM decoder training (`04_rnn_lstm_training.ipynb`)  
-5. Evaluation and analysis (`05_evaluation_and_analysis.ipynb`)  
-6. End-to-end combined pipeline (`main.ipynb`)  
+1. Setup and environment checks (`00_Setup.ipynb`)
+2. CNN training, evaluation, and scratch comparison (`01_Cnn.ipynb`)
+3. Flickr8k feature extraction and caption preprocessing (`02_Caption.ipynb`)
+4. Simple RNN and LSTM decoder training or skip logic (`03_Decoder.ipynb`)
+5. Final evaluation, tables, and report artifacts (`04_Report.ipynb`)
+6. CNN result visualizations (`05_CnnVisual.ipynb`)
+7. RNN/LSTM result visualizations (`06_RnnVisual.ipynb`)
+8. End-to-end combined pipeline (`main.ipynb`)
 
 The required experiments include:
 
-1. Training 16 Keras CNN architectures with Conv2D shared parameters  
-2. Comparing CNN Keras inference with CNN forward propagation from scratch  
-3. Comparing shared `Conv2D` and non-shared `LocallyConnected2D` CNN variants  
-4. Training 6 Simple RNN decoders and 6 LSTM decoders  
-5. Measuring BLEU-4, METEOR, and runtime for each decoder variation  
-6. Comparing Keras and from-scratch decoder inference  
-7. Comparing Simple RNN and LSTM caption quality  
-8. Testing at least 3 maximum caption length variations  
-9. Showing qualitative analysis for at least 10 images with generated and ground truth captions  
+1. Training 16 Keras CNN architectures with Conv2D shared parameters.
+2. Comparing CNN Keras inference with CNN forward propagation from scratch.
+3. Comparing shared `Conv2D` and non-shared `LocallyConnected2D` CNN variants.
+4. Training 6 Simple RNN decoders and 6 LSTM decoders.
+5. Measuring BLEU-4, METEOR, and runtime for each decoder variation.
+6. Comparing Keras and from-scratch decoder inference.
+7. Comparing Simple RNN and LSTM caption quality.
+8. Testing at least 3 maximum caption length variations.
+9. Showing qualitative analysis for at least 10 images with generated and ground truth captions.
+
+Main CNN outputs:
+
+- `reports/tables/cnn_records.csv`
+- `reports/tables/cnn_manual_comparison.csv`
+- `reports/tables/cnn_by_num_layers.csv`
+- `reports/tables/cnn_by_filters.csv`
+- `reports/tables/cnn_by_kernel_size.csv`
+- `reports/tables/cnn_by_pooling_type.csv`
+- `reports/figures/cnn_macro_f1.png`
+- `reports/figures/cnn_hyperparameter_effects.png`
+- `reports/figures/cnn_training_loss.png`
+- `reports/figures/cnn_validation_loss.png`
+- `reports/figures/cnn_keras_vs_scratch.png`
+- `reports/figures/cnn_parameter_count.png`
+
+Main RNN/LSTM outputs:
+
+- `reports/tables/rnn/train_records.json`
+- `reports/tables/rnn/rnn_lstm_results.csv`
+- `reports/tables/rnn/keras_vs_scratch.csv`
+- `reports/tables/rnn/rnn_vs_lstm.csv`
+- `reports/tables/rnn/caption_by_recurrent_layers.csv`
+- `reports/tables/rnn/caption_by_hidden_size.csv`
+- `reports/tables/rnn/length_scores.csv`
+- `reports/tables/rnn/qualitative_examples.csv`
+- `reports/tables/rnn/raw_caption_examples.csv`
+- `reports/figures/rnn/rnn_lstm_bleu4_variations.png`
+- `reports/figures/rnn/rnn_lstm_meteor_variations.png`
+- `reports/figures/rnn/rnn_layer_hidden_effects.png`
+- `reports/figures/rnn/rnn_keras_vs_scratch.png`
+- `reports/figures/rnn/length_bleu4.png`
+- `reports/figures/rnn/training_loss_curves.png`
+- `reports/figures/rnn/validation_loss_curves.png`
 
 ## Requirements
 
-1. Python 3.10 or higher
-2. pip (Python package manager)
-3. Virtual environment (very recommended, like venv or conda)
-4. Jupyter Notebook or another notebook runner
+1. Python 3.10 or higher.
+2. pip.
+3. Virtual environment, such as `venv` or conda.
+4. Jupyter Notebook, JupyterLab, Google Colab, or Kaggle Notebook.
+5. Intel Image Classification dataset.
+6. Flickr8k dataset.
+7. GPU is recommended for RNN/LSTM decoder training.
+
+Expected local dataset layout:
+
+```text
+data/raw/intel/
+data/raw/flickr8k/
+```
 
 ## Python Dependencies (requirements.txt)
 
@@ -96,49 +195,56 @@ ipykernel
 
 ## Getting Started
 
-1. Clone Repository
+1. Clone repository
 
     ```bash
     git clone https://github.com/Rusmn/ML-Tubes-2_RecursiveLearnaholic.git
-
     cd ML-Tubes-2_RecursiveLearnaholic
     ```
 
-2. Install dependencies
+2. Create and activate a virtual environment
 
-    This step is only necessary if you plan to run in local environment.
+    ```bash
+    python3 -m venv .venv
+    source .venv/bin/activate
+    ```
+
+3. Install dependencies
 
     ```bash
     pip install -r requirements.txt
     ```
 
-3. Prepare datasets and output folders
+4. Prepare datasets
 
-    Place the required datasets in `data/raw`.
+    Place the required datasets in `data/raw`:
 
     ```text
-    data/raw/intel_image_classification/
+    data/raw/intel/
     data/raw/flickr8k/
     ```
 
-    The pipeline writes reusable artifacts to `data/features`, `data/vocab`, `models`, and `reports`.
+5. Run the notebooks
 
-4. Running the program
-
-    Choose the desired notebook to run from `notebooks` and run it via any notebook running environment, like `jupyter notebook`, `deepnote`, `google colab`, etc.
-
-    The recommended order is:
+    Recommended order:
 
     ```text
-    notebooks/01_cnn_training.ipynb
-    notebooks/02_caption_preprocessing.ipynb
-    notebooks/03_feature_extraction.ipynb
-    notebooks/04_rnn_lstm_training.ipynb
-    notebooks/05_evaluation_and_analysis.ipynb
+    notebooks/00_Setup.ipynb
+    notebooks/01_Cnn.ipynb
+    notebooks/02_Caption.ipynb
+    notebooks/03_Decoder.ipynb
+    notebooks/04_Report.ipynb
+    notebooks/05_CnnVisual.ipynb
+    notebooks/06_RnnVisual.ipynb
+    ```
+
+    To run the full pipeline in one file, use:
+
+    ```text
     notebooks/main.ipynb
     ```
 
-5. Optional source validation
+6. Optional source validation
 
     ```bash
     python3 -m compileall -q src

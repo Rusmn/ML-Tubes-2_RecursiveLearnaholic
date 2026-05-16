@@ -1,4 +1,4 @@
-<h1 align="center">Tubes 2 Machine Learning - CNN and RNN Image Captioning</h1>
+<h1 align="center">RecursiveLearnaholic: Tubes 2 Machine Learning - CNN and RNN Image Captioning</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python&logoColor=white"/>
@@ -9,7 +9,7 @@
 
 ## Description
 
-This repository contains the implementation for Tugas Besar 2 IF3270 Pembelajaran Mesin. The project focuses on Convolutional Neural Network (CNN), Simple Recurrent Neural Network (Simple RNN), and Long Short-Term Memory (LSTM) models.
+This repository contains the implementation for Convolutional Neural Network (CNN), Simple Recurrent Neural Network (Simple RNN), and Long Short-Term Memory (LSTM) models from scratch to fulfill the assignment Tugas Besar 2 Machine Learning.
 
 The assignment consists of two main tasks. The first task implements CNN forward propagation from scratch and compares it with Keras models on the Intel Image Classification dataset. The second task builds an image captioning pipeline on Flickr8k using a CNN encoder and Simple RNN/LSTM decoders with the pre-inject architecture from Show and Tell.
 
@@ -152,23 +152,52 @@ ipykernel
 
 ## Creators
 
-### Group - RecursiveLearnaholic
+### Group 22 - RecursiveLearnaholic
 
 <table>
     <tr align="left">
-        <td><b>Member</b></td>
+        <td><b>NIM</b></td>
+        <td><b>Name</b></td>
+        <td align="center"><b>GitHub</b></td>
         <td><b>Responsibilities</b></td>
     </tr>
     <tr align="left">
-        <td>Member 1</td>
-        <td>CNN implementation, CNN utility functions, feature extractor, Keras CNN training, CNN forward propagation from scratch, macro F1-score evaluation, shared vs non-shared CNN analysis, and CNN report section.</td>
+        <td>13523066</td>
+        <td>Muhammad Ghifary Komara Putra</td>
+        <td align="center" >
+            <div style="margin-right: 20px;">
+            <a href="https://github.com/Sanesasaha" >
+                <img src="https://avatars.githubusercontent.com/u/163738662?v=4" width="48px;" alt=""/>
+                <br/> <sub><b> @Sanesasaha </b></sub>
+            </a><br/>
+            </div>
+        </td>
+        <td>RNN Implementation, LSTM Implementation, Report writing.</td>
     </tr>
     <tr align="left">
-        <td>Member 2</td>
-        <td>Caption preprocessing, vocabulary preparation, Simple RNN and LSTM layers from scratch, embedding layer, dense projection/output layers, Keras weight loading, and RNN/LSTM implementation explanation.</td>
+        <td>13523068</td>
+        <td>Muh Rusmin Nurwadin</td>
+        <td align="center" >
+            <div style="margin-right: 20px;">
+            <a href="https://github.com/Rusmn" >
+                <img src="https://avatars.githubusercontent.com/u/103303974?v=4" width="48px;" alt=""/>
+                <br/> <sub><b> @Rusmn </b></sub>
+            </a><br/>
+            </div>
+        </td>
+        <td>Model Architecture, Experiments, Report writing.</td>
     </tr>
     <tr align="left">
-        <td>Member 3</td>
-        <td>Image captioning pipeline, Keras pre-inject decoder, decoder training grid, weight export, greedy decoding, BLEU-4 and METEOR evaluation, runtime measurement, length study, qualitative analysis, and RNN/LSTM experiment report section.</td>
+        <td>13523100</td>
+        <td>Aryo Wisanggeni</td>
+        <td align="center" >
+            <div style="margin-right: 20px;">
+            <a href="https://github.com/Staryo40" >
+                <img src="https://avatars.githubusercontent.com/u/139449070?v=4" width="48px;" alt=""/>
+                <br/> <sub><b> @Staryo40 </b></sub>
+            </a><br/>
+            </div>
+        </td>
+        <td>CNN Implementation, Experiments, Report writing.</td>
     </tr>
 </table>
